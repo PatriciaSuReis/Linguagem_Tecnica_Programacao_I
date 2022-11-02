@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+@$mensagem = $_SESSION['mensagem']; // se aparecer erro apenas ignore
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -15,8 +22,6 @@
     </form> <br>
 
     <?php
-        session_start();
-        $mensagem = $_SESSION['mensagem'];
 
         if($mensagem != '') {
             echo $mensagem."<br><br>";
@@ -26,6 +31,8 @@
 
         $pasta = "upload/";
         $diretorio = dir($pasta);
+
+        echo "<h3>Arquivos salvos:</h3>";
 
         while($arquivo = $diretorio->read()){
             if($arquivo != '.' && $arquivo != '..'){
